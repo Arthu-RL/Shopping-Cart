@@ -1,6 +1,5 @@
 correct = true;
 let path = "";
-var destinyPage = "";
 
 const form = document.querySelectorAll("form");
 const destino = document.getElementById("destino").addEventListener("change", (e) => {
