@@ -29,52 +29,52 @@
         
         <!------------------- login form -------------------------->
 
-        <div class="login-container" id="login">
+        <form class="login-container" id="login">
             <div class="top">
                 <span>Não tem uma conta? <a href="#" onclick="register()">Cadastre-se</a></span>
                 <header>Login</header>
             </div>
             <div class="input-box">
-                <input type="text" class="input-field" placeholder="E-mail">
+                <input required type="email" class="input-field" name="email" placeholder="E-mail">
                 <i class="bx bx-user"></i>
             </div>
             <div class="input-box">
-                <input type="password" class="input-field" placeholder="Senha">
+                <input type="password" class="input-field" name="password" placeholder="Senha">
                 <i class="bx bx-lock-alt"></i>
             </div>
             <div class="input-box">
-                <input type="submit" class="submit" value="Acessar">
+                <button class="submit">Acessar</button>
             </div>
-        </div>
+        </form>
 
         <!------------------- registration form -------------------------->
-        <div class="register-container" id="register">
+        <form class="register-container" id="register">
             <div class="top">
                 <span>Tem uma conta? <a href="#" onclick="login()">Login</a></span>
                 <header>Cadastre-se</header>
             </div>
             <div class="two-forms">
                 <div class="input-box">
-                    <input type="text" class="input-field" placeholder="Nome">
+                    <input type="text" class="input-field" name="name" placeholder="Nome">
                     <i class="bx bx-user"></i>
                 </div>
                 <div class="input-box">
-                    <input type="text" class="input-field" placeholder="Sobrenome">
+                    <input type="text" class="input-field" name="sobrenome" placeholder="Sobrenome">
                     <i class="bx bx-user"></i>
                 </div>
             </div>
             <div class="input-box">
-                <input type="text" class="input-field" placeholder="Email">
+                <input required type="email" class="input-field" name="email" placeholder="E-mail">
                 <i class="bx bx-envelope"></i>
             </div>
             <div class="input-box">
-                <input type="password" class="input-field" placeholder="Senha">
+                <input type="password" class="input-field" name="password" placeholder="Senha">
                 <i class="bx bx-lock-alt"></i>
             </div>
             <div class="input-box">
-                <input type="submit" class="submit" value="Cadastrar-se">
+                <button class="submit">Cadastrar-se</button>
             </div>
-        </div>
+        </form>
     </div>
 </div>   
 
