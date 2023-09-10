@@ -11,3 +11,4 @@ function addToCart(productName, price) {
     const newTotal = currentTotal + price;
     cartTotal.textContent = `R$ ${newTotal.toFixed(2)}`;
 }
+
