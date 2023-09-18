@@ -8,12 +8,41 @@
 </head>
 <body>
 	<div id="checkout">
-		<h2>Calcular frete</h2>
-		<div id="frete">
-			<p>CEP</p>
-			<input class="input-field" name="CEP" placeholder="CEP">
+		<div class="transportationTax">
+			<h2>Calcular frete</h2>
+			<br>
+			<input class="input-field" name="CEP" placeholder="CEP"></input>
 			<button>Calcular</button>
 		</div>
+		<br><br>
+		<h2>Formas de Pagamento</h2>
+    <div id="paymentMethods">
+      <button class="paymentMethod">Débito</button>
+      <button class="paymentMethod">PIX</button>
+      <button class="paymentMethod">Boleto</button>
+      <button class="paymentMethod">Cartão de crédito</button>
+    </div>
+    <br>
+    <img id="paymentMethodImage" src="../img/payment-methods/debit.png" />
+    <br> <br>
+    <div id="cardBrands">
+      <button class="cardBrands">Visa</button>
+      <button class="cardBrands">Mastercard</button>
+      <button class="cardBrands">American Express</button>
+    </div>
+    <br>
+    <img id="cardBrandImage" src="" />
+    <form id="checkoutForm">
+      <label for="cardName">Nome do titular</label>
+      <input type="text" id="cardName"></input> <br>
+      <label for="cardNumber">Número do cartão</label>
+      <input type="text" id="cardNumber"></input> <br>
+      <label for="cardCode">Código de segurança</label>
+      <input type="text" id="cardCode"></input> <br>
+      <button>Confirmar pagamento</button>
+    </form>
+   	<br>
+    <button id="billCheckoutBtn">Confirmar pagamento</button>
 	</div>
 
 	<script src="checkout.js"></script>

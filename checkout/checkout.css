@@ -34,8 +34,21 @@ div#checkout {
 	flex-direction: column;
 }
 
-div#frete {
+.transportationTax {
 	padding-top: 20px;
+	display: flex;
+	justify-content: space-between;
+}
+
+#paymentMethods {
+	padding-top: 20px;
+	display: flex;
+	justify-content: space-between;
+}
+
+#cardBrands {
+	display: none;
+	padding-top: 10px;
 	display: flex;
 	justify-content: space-between;
 }
@@ -52,7 +65,24 @@ button {
   transition: background-color 0.3s;
 }
 
-p {
+#paymentMethodImage, #cardBrandImage {
+	display: none;
+	padding-top: 10px;
+	width: 200px;
+	height: 120px;
+}
+
+#checkoutForm {
+	display: none;
+	display: flex;
+	flex-direction: column;
+}
+
+#billCheckoutBtn {
+	display: none;
+}
+
+h2 {
 	padding-inline: 20px;
 	font-size: 20px;
 }
