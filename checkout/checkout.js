@@ -117,7 +117,7 @@ let checkoutForm = document.getElementById('checkoutForm');
 	if (nameIsValid && cardNumberIsValid && cardCodeIsValid && brandDisplay && cardsPaymentDisplay && validCep) {
 		alert("Pagamento Confirmado!");
 	} else {
-		alert("Credencias incorretas!");
+		alert("Credencias incorretas! Precisa selecionar a forma de pagamento, e se preciso, a marca do cartão.");
 	}
 });
 
