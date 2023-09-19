@@ -1,5 +1,9 @@
 var maxItems = 0, totalPrice = 0;
 
+function changeImg(img, newSrc) {
+    img.src = newSrc;
+}
+
 function addToCart(productName, price) {
     const cartItems = document.getElementById('cart-items');
     const cartTotal = document.getElementById('cart-total');
