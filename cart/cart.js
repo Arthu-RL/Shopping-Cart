@@ -26,7 +26,8 @@ function addToCart(productName, price) {
 
 document.getElementById('payment').addEventListener('click', pay);
 
-function pay() {
+function pay() {	
+    localStorage.setItem('amount', totalPrice);
     if (totalPrice > 0) {
         window.location.href = "../checkout/checkout.html";
     } else {

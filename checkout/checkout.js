@@ -1,6 +1,8 @@
 var paymentMethodButtons = document.querySelectorAll('.paymentMethod');
 var cardBrandButtons = document.querySelectorAll('.cardBrand');
 var cardsPaymentDisplay = false, brandDisplay = false, billOrPixPayment = false, addTax = false, validCep = false;
+var paymentConfirmed = false;
+var totalPrice = Number(localStorage.getItem('amount'));
 
 document.getElementById("tax").addEventListener("click", () => {
 
@@ -9,11 +11,12 @@ document.getElementById("tax").addEventListener("click", () => {
     
     const cepPatternIsValid = /^\d{8}$/.test(cepValue);
     
-    if (cepPatternIsValid) {
-        alert("CEP: " + cepValue + "Válido");
+    if (cepPatternIsValid && !validCep) {
+        alert("CEP: " + cepValue + " Válido. R$ 50,00 adicionados");
+        totalPrice += 50;
         validCep = true;
     } else {
-        alert("CEP inválido. Por favor coloque um CEP com 8 dígitos e sem '-'.");
+        alert("CEP inválido, ou já foi validado. Por favor coloque um CEP com 8 dígitos e sem '-'.");
     }
 });
 
@@ -109,13 +112,20 @@ function changeCardBrandImage(e) {
 let checkoutForm = document.getElementById('checkoutForm');
 	checkoutForm.addEventListener('submit', (e) => {
 	e.preventDefault();
+	
+	if (paymentConfirmed) {
+		return alert("Pagamento já foi confirmado");
+	}	
+	
+	price = localStorage.getItem('amount', totalPrice);
 
 	nameIsValid = /(?=.*[A-Z])(?=.*[a-z])/.test(e.target.name.value);
 	cardNumberIsValid = /^\d{16}$/.test(e.target.number.value);
 	cardCodeIsValid = /^\d{3}$/.test(e.target.code.value);
 	
 	if (nameIsValid && cardNumberIsValid && cardCodeIsValid && brandDisplay && cardsPaymentDisplay && validCep) {
-		alert("Pagamento Confirmado!");
+		alert("Pagamento Confirmado!" + "R$ " + totalPrice + ",00");
+		paymentConfirmed = true;
 	} else {
 		alert("Credencias incorretas! Precisa selecionar a forma de pagamento, e se preciso, a marca do cartão.");
 	}
@@ -123,4 +133,12 @@ let checkoutForm = document.getElementById('checkoutForm');
 
 
 let payButton = document.getElementById('billCheckoutBtn');
-payButton.addEventListener('click', () => { alert("Pagamento Confirmado!") });
+payButton.addEventListener('click', () => { 
+	if (paymentConfirmed) {
+		return alert("Pagamento já foi confirmado");
+	}
+	if (validCep) {
+		alert("Pagamento Confirmado!" + "R$ " + totalPrice + ",00");
+		paymentConfirmed = true;
+	} else { alert("Coloque um CEP válido!") }
+});
