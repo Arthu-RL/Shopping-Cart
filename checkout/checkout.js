@@ -12,8 +12,8 @@ document.getElementById("tax").addEventListener("click", () => {
     const cepPatternIsValid = /^\d{8}$/.test(cepValue);
     
     if (cepPatternIsValid && !validCep) {
-        alert("CEP: " + cepValue + " Válido. R$ 50,00 adicionados");
-        totalPrice += 50;
+        alert("CEP: " + cepValue + " Válido. R$ 100,00 adicionados");
+        totalPrice += 100.00;
         validCep = true;
     } else {
         alert("CEP inválido, ou já foi validado. Por favor coloque um CEP com 8 dígitos e sem '-'.");
@@ -124,10 +124,10 @@ let checkoutForm = document.getElementById('checkoutForm');
 	cardCodeIsValid = /^\d{3}$/.test(e.target.code.value);
 	
 	if (nameIsValid && cardNumberIsValid && cardCodeIsValid && brandDisplay && cardsPaymentDisplay && validCep) {
-		alert("Pagamento Confirmado!" + "R$ " + totalPrice + ",00");
+		alert("Pagamento Confirmado! " + " R$ " + totalPrice);
 		paymentConfirmed = true;
 	} else {
-		alert("Credencias incorretas! Precisa selecionar a forma de pagamento, e se preciso, a marca do cartão.");
+		alert("Credenciais incorretas! Precisa selecionar a forma de pagamento, e se preciso, a marca do cartão.");
 	}
 });
 
@@ -138,7 +138,7 @@ payButton.addEventListener('click', () => {
 		return alert("Pagamento já foi confirmado");
 	}
 	if (validCep) {
-		alert("Pagamento Confirmado!" + "R$ " + totalPrice + ",00");
+		alert("Pagamento Confirmado! " + " R$ " + totalPrice);
 		paymentConfirmed = true;
 	} else { alert("Coloque um CEP válido!") }
 });
