@@ -1,20 +1,21 @@
 var paymentMethodButtons = document.querySelectorAll('.paymentMethod');
 var cardBrandButtons = document.querySelectorAll('.cardBrand');
-var cardsPaymentDisplay = false, brandDisplay = false, billOrPixPayment = false, addTax = false;
+var cardsPaymentDisplay = false, brandDisplay = false, billOrPixPayment = false, addTax = false, validCep = false;
 
-let cep = document.getElementById('tax');
-cep.addEventListener('click', () => {
-	if (cepValidate() && !addTax) {
-		alert("Frete de 50 reais adicionado!");
-	} else {
-		alert("Frete de 50 reais já foi adicionado!");
-	}
+document.getElementById("tax").addEventListener("click", () => {
+
+    const cepInput = document.getElementById("cep");
+    const cepValue = cepInput.value.trim(); 
+    
+    const cepPatternIsValid = /^\d{8}$/.test(cepValue);
+    
+    if (cepPatternIsValid) {
+        alert("CEP: " + cepValue + "Válido");
+        validCep = true;
+    } else {
+        alert("CEP inválido. Por favor coloque um CEP com 8 dígitos e sem '-'.");
+    }
 });
-
-function cepValidate() {
-	let cep = document.getElementById('cep');
-	return /^\d+$/.test(cep.target.CEP.value) && cep.length == 8;
-}
 
 
 paymentMethodButtons.forEach( (button) => { button.addEventListener('click', changePaymentMethodImage) } );
@@ -110,10 +111,10 @@ let checkoutForm = document.getElementById('checkoutForm');
 	e.preventDefault();
 
 	nameIsValid = /(?=.*[A-Z])(?=.*[a-z])/.test(e.target.name.value);
-	cardNumberIsValid = (/^\d+$/.test(e.target.number.value) && e.target.number.value).length == 16;
-	cardCodeIsValid = /^\d+$/.test(e.target.code.value) && (e.target.code.value).length == 3;
+	cardNumberIsValid = /^\d{16}$/.test(e.target.number.value);
+	cardCodeIsValid = /^\d{3}$/.test(e.target.code.value);
 	
-	if (nameIsValid && cardNumberIsValid && cardCodeIsValid && brandDisplay && cardsPaymentDisplay) {
+	if (nameIsValid && cardNumberIsValid && cardCodeIsValid && brandDisplay && cardsPaymentDisplay && validCep) {
 		alert("Pagamento Confirmado!");
 	} else {
 		alert("Credencias incorretas!");
