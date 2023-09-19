@@ -74,11 +74,10 @@ button {
 
 #checkoutForm {
 	display: none;
-	display: flex;
-	flex-direction: column;
 }
 
 #billCheckoutBtn {
+	padding-top: -1px;
 	display: none;
 }
 

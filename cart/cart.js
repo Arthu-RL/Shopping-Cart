@@ -1,4 +1,4 @@
-var maxItems = 0;
+var maxItems = 0, totalPrice = 0;
 
 function addToCart(productName, price) {
     const cartItems = document.getElementById('cart-items');
@@ -15,6 +15,17 @@ function addToCart(productName, price) {
 
     const currentTotal = parseFloat(cartTotal.textContent.replace('R$', '').trim());
     const newTotal = currentTotal + price;
+    totalPrice = newTotal.toFixed(2);
     cartTotal.textContent = `R$ ${newTotal.toFixed(2)}`;
     maxItems++;
+}
+
+document.getElementById('payment').addEventListener('click', pay);
+
+function pay() {
+    if (totalPrice > 0) {
+        window.location.href = "../checkout/checkout.html";
+    } else {
+        alert("Para realizar o pagamento é necessário adicionar algo ao carrinho!");
+    }
 }
